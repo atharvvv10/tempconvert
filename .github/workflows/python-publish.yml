@@ -3,7 +3,7 @@ name: Publish Python Package
 on:
   push:
     tags:
-      - 'v*.*.*'  # Triggers only when a version tag like v1.0.0 is pushed
+      - 'v*.*.*'  # Triggers when pushing tags like v0.1.1
 
 jobs:
   build:
@@ -21,7 +21,11 @@ jobs:
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+        env:
+          POETRY_HOME: ${{ runner.temp }}/poetry
+
+      - name: Add Poetry to PATH
+        run: echo "${{ runner.temp }}/poetry/bin" >> $GITHUB_PATH
 
       - name: Configure Poetry
         run: poetry config virtualenvs.create false
