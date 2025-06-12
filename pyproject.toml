@@ -1,6 +1,6 @@
 [project]
 name = "tempconvert"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple temperature conversion tool"
 authors = [
     { name = "Atharv", email = "atharvachaugale22@gmail.com" }
