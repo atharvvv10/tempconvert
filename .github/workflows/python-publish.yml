@@ -1,34 +1,23 @@
-name: Publish Python 🐍 package
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build:
-    name: Build and publish to PyPI
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'  # <-- Make sure this matches your pyproject.toml requirement
 
       - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Configure Poetry with PyPI token
-        run: poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: '1.7.1'  # or your current version
 
       - name: Install dependencies
         run: poetry install
 
       - name: Build and publish
-        run: poetry publish --build
+        run: |
+          poetry build
+          poetry publish --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
