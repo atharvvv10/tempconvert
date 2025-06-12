@@ -1,6 +1,6 @@
 [project]
-name = "tempconvert"
-version = "0.1.1"
+name = "tempconvert-atharv22"  # Changed name to avoid PyPI name conflict
+version = "0.1.2"               # Bumped version for next release
 description = "A simple temperature conversion tool"
 authors = [
     { name = "Atharv", email = "atharvachaugale22@gmail.com" }
