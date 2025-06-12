@@ -3,7 +3,7 @@ name: Publish Python Package
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - 'v*.*.*'  # Triggers only when a version tag like v1.0.0 is pushed
 
 jobs:
   build:
@@ -20,11 +20,14 @@ jobs:
 
       - name: Install Poetry
         run: |
-          curl -sSL https://install.python-poetry.org | python3
+          curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Configure Poetry
+        run: poetry config virtualenvs.create false
+
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-interaction --no-ansi
 
       - name: Build package
         run: poetry build
