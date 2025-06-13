@@ -1,5 +1,23 @@
-
 # 🧊 TempConvert
+
+```bash
+📌 Internship Context
+
+This project was completed as part of an internship assignment (Days 1–15).
+The main goal was not to build a complex application, but to understand and practice:
+
+✅ Python packaging and project structuring
+
+✅ Dependency management with Poetry
+
+✅ Writing and running unit tests with pytest
+
+✅ Automating workflows using GitHub Actions (CI/CD)
+
+✅ Publishing packages to PyPI
+
+You can refer to this project if you're working on similar internship or learning tasks.
+```
 
 A simple Python package to convert temperatures between Celsius and Fahrenheit.
 
@@ -99,3 +117,4 @@ git push origin v0.1.x
 ```bash
 MIT License © Atharv Chougale
 ```
+
